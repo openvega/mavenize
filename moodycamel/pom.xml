@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.moodycamel</groupId>
+  <artifactId>moodycamel</artifactId>
+  <name>MoodyCamel</name>
+  <version>1.0</version>
+  <packaging>nar</packaging>
+
+  <distributionManagement>
+    <repository>
+      <id>thirdparty</id>
+      <name>thirdparty</name>
+      <url>http://hkvmmarapppro02:8081/repository/thirdparty</url>
+    </repository>
+  </distributionManagement>
+  
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
+  
+  <build>
+    <defaultGoal>deploy</defaultGoal>
+    <plugins>
+      <plugin>
+        <groupId>com.github.maven-nar</groupId>
+        <artifactId>nar-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

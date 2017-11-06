@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <!-- The Basics -->
+  <groupId>com.google</groupId>
+  <artifactId>protobuf-parent</artifactId>
+  <version>3.3.0</version>
+  <packaging>pom</packaging>
+ 
+  <!-- More Project Information -->
+  <name>Google Protobuf</name>
+  <description>Protocol Buffers Google's Data Interchange Format</description>
+  <url>https://github.com/google/protobuf</url>
+ 
+  <distributionManagement>
+    <repository>
+      <id>thirdparty</id>
+      <name>thirdparty</name>
+      <url>http://hkvmmarapppro02:8081/repository/thirdparty</url>
+    </repository>
+  </distributionManagement>
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.github.maven-nar</groupId>
+          <artifactId>nar-maven-plugin</artifactId>
+          <version>3.5.0</version>
+          <extensions>true</extensions>
+          <configuration>
+            <resourcesCopyAOL>false</resourcesCopyAOL>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <modules>
+    <module>protobuf</module>
+	<module>protobuf-exec</module>
+  </modules>
+</project>

@@ -1,0 +1,20 @@
+1. Open googlemock\msvc\2015\gmock.sln, create x64 platform
+
+2. Configuration ALL project Properties -> C/C++ -> Code Generation -> Runtime Library 
+    Release -> Multi-threaded DLL (/MD)
+    Debug -> Multi-threaded Debug DLL (/MDd)
+    
+2. Build gmock both debug and release library, it will include gtest as well.
+
+3. 2 sub project created to host the gmock package
+gmock
+    for windows:
+    copy gmock debug and release library
+    Debug\gmock.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-1.8.0d.lib
+    Release\gmock.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-1.8.0.lib
+    Debug\gmock_main.lib -> gmock_main/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock_main-1.8.0d.lib
+    Release\gmock_main.lib -> gmock_main/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock_main-1.8.0.lib
+    copy gmock header to src/nar/resources/noarch/include
+gmock_main
+    copy gmock_main library to src/nar/resources/aol/${AOL}/lib
+    touch src/nar/resources/noarch/include/dummy.h

@@ -1,0 +1,29 @@
+1. Copy header files from omex\gen\src\ and omex\omn\src\ to genium\genium_oapi\src\nar\resources\noarch\include\genium
+In these header files, Add "genium/" to other genium header file includes.  But leave other std include intact
+Eg. Change:
+#include "omni.h"
+#include "oal_align_packed.h"
+#include <stdint.h>
+To:
+#include "genium/omni.h"
+#include "genium/oal_align_packed.h"
+#include <stdint.h>		// no change
+
+Add the following line to omniapi.h
+#include "omni.h"
+
+2. Copy and rename the following lib to genium\genium_<lib name>\src\nar\resources\aol\amd64-Windows-msvc\lib\:
+oapi.lib -> genium_oapi-<version>.lib
+oapimtdll.lib -> genium_oapimt-<version>.lib
+Zlibstat.lib -> genium_zlibstat-<version>.lib
+Zlibwapi.lib -> genium_zlibwapi-<version>.lib
+
+3. Linux: Copy and rename libgenium_oapi.a to genium\genium_oapi\src\nar\resources\aol\amd64-Linux-gpp\lib\libgenium_oapi-<version>.a
+
+4. mvn clean deploy
+
+*** 1.0-dummy ***
+5. mvn versions:set -DnewVersion=1.0-dummy
+6. update all child pom.xml, comment out <configuration>...</configuration> in <artifactId>nar-maven-plugin</artifactId>
+7. mvn clean deploy
+8. mvn versions:revert

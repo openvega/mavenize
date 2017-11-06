@@ -1,0 +1,22 @@
+We use 1.59 rather than 1.62 as there are linking errors when building DLLs that depend on boost log.
+A. Windows
+1. replace the following in boost\config\user.hpp to disable auto library select
+From
+// #define BOOST_ALL_NO_LIB
+To 
+#ifndef BOOST_ALL_NO_LIB
+#define BOOST_ALL_NO_LIB
+#endif
+
+2. build and install boost as 64-bit static with dynamic runtime library
+bootstrap.bat
+b2 address-model=64 runtime-link=shared install
+
+B. Linux
+bootstrap.bat
+b2 cxxflags=-fPIC address-model=64 install
+
+C. Mavenize
+3. use prepare.sh copy and rename necessary headers and libraries into individual lib folder
+
+4. maven clean deploy

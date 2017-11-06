@@ -1,0 +1,15 @@
+1. Download WpdPack from http://www.winpcap.org/devel.htm
+
+2. copy wpcap.lib to src/nar/resources/aol/${AOL}/lib/wpcap-${VERSION}.lib
+2.1 copy all headers to src/nar/resources/aol/noarch/include
+
+3. Deploy windows package
+
+4. mvn versions:set -DnewVersion=1.0-dummy
+4.1 update pom.xml, comment out <configuration>...</configuration> in <artifactId>nar-maven-plugin</artifactId>
+
+5. remove src/nar/resources/aol/noarch/include/*, then touch src/nar/resources/aol/noarch/include/dummy.h
+
+6. Deploy dummy package for Linux
+
+7. mvn versions:revert

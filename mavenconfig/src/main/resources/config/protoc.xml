@@ -1,0 +1,44 @@
+<project name="protoc">
+  <target name="check-file">
+    <available file="src/main/proto" property="folderExists"/>
+  </target>
+
+  <target name="protoc" depends="check-file" if="folderExists">
+    <antcall target="create-folder"/>
+    <exec executable="bash" failonerror="true">
+      <arg line="-c 'target/nar/protobuf-exec-${protobuf.version}-${nar.aol}-executable/bin/${nar.aol}/protoc -Isrc/main/proto --cpp_out=dllexport_decl=${project.artifactId}_api:. src/main/proto/*.proto'"/>
+      <env key="LD_LIBRARY_PATH" value="target/nar/protobuf-${protobuf.version}-${nar.aol}-shared/lib/${nar.aol}/shared:${env.LD_LIBRARY_PATH}"/>
+      <env key="PATH" value="target/nar/protobuf-${protobuf.version}-${nar.aol}-shared/lib/${nar.aol}/shared"/>
+    </exec>
+    <antcall target="disable-warning"/>
+    <antcall target="include-header"/>
+    <antcall target="move-file"/>
+  </target>
+
+  <target name="create-folder">
+    <mkdir dir="src/main/include"/>
+    <mkdir dir="src/main/c"/>
+  </target>
+
+  <target name="disable-warning">
+    <tempfile property="sed.temp" prefix="warning." deleteonexit="true"></tempfile>
+    <echo file="${sed.temp}" append="false">sed -i '1i#pragma warning( disable: 4267 4800 4996 )' *.pb.*
+sed -i '1i#pragma warning( push )' *.pb.*
+sed -i '$a#pragma warning( pop )' *.pb.*</echo>
+    <exec executable="bash" failonerror="true">
+      <arg line="${sed.temp}"/>
+    </exec>
+  </target>
+  <target name="include-header">
+    <tempfile property="sed.temp" prefix="header." deleteonexit="true"></tempfile>
+    <echo file="${sed.temp}" append="false">sed -i '1i#include "${project.parent.artifactId}/${project.artifactId}.h"' *.pb.h</echo>
+    <exec executable="bash" failonerror="true">
+      <arg line="${sed.temp}"/>
+    </exec>
+  </target>
+  <target name="move-file">
+    <exec executable="bash" failonerror="true">
+      <arg line="-c '/bin/mv *.pb.cc src/main/c; /bin/mv *.pb.h src/main/include'"/>
+    </exec>
+  </target>
+</project>

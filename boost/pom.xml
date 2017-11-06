@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <!-- The Basics -->
+  <groupId>org.boost</groupId>
+  <artifactId>boost-parent</artifactId>
+  <version>1.59.0</version>
+  <packaging>pom</packaging>
+
+ 
+  <!-- More Project Information -->
+  <name>Boost Parent</name>
+  <description>Boost Library</description>
+  <url>http://www.boost.org</url>
+ 
+  <distributionManagement>
+    <repository>
+      <id>thirdparty</id>
+      <name>thirdparty</name>
+      <url>http://hkvmmarapppro02:8081/repository/thirdparty</url>
+    </repository>
+  </distributionManagement>
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.github.maven-nar</groupId>
+          <artifactId>nar-maven-plugin</artifactId>
+          <version>3.5.0</version>
+          <extensions>true</extensions>
+          <configuration>
+            <resourcesCopyAOL>false</resourcesCopyAOL>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <modules>
+    <module>boost</module>
+	<module>boost_chrono</module>
+	<module>boost_date_time</module>
+	<module>boost_filesystem</module>
+	<module>boost_log</module>
+	<module>boost_log_setup</module>
+	<module>boost_program_options</module>
+	<module>boost_python</module>
+	<module>boost_regex</module>
+	<module>boost_system</module>
+	<module>boost_thread</module>
+  </modules>
+</project>

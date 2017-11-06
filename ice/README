@@ -1,0 +1,52 @@
+A. Windows build
+
+1. Make the following changes to the code:
+1.1 In cpp\config\Make.rules.mak
+SLICEPARSERLIB		= $(libdir)\slice$(LIBSUFFIX).lib
+To:
+SLICEPARSERLIB		= $(libdir)\slice-$(VERSION)$(LIBSUFFIX).lib
+
+1.2 Change Makefile.mak in the sub-projects: Freeze, Glacier2Lib, Ice, IceBox, IceGridLib, IceSSL, IceStormLib, IceUtil, Slice
+In cpp\src\Ice\Makefile.mak
+LIBNAME		= $(top_srcdir)\lib\ice$(LIBSUFFIX).lib
+To:
+LIBNAME		= $(top_srcdir)\lib\ice-$(VERSION)$(LIBSUFFIX).lib
+
+1.3 Changes headers under cpp\include in the following: 
+Config.h in Glacier2, Ice, IceBox, IceGrid, IceSSL, IceStorm, IceUtil, Slice\Parser.h and Freeze\Initialize.h
+e.g. In cpp\include\Ice\Config.h
+#      if defined(_DEBUG) && !defined(ICE_OS_WINRT)
+#          pragma comment(lib, "IceD.lib")
+To:
+#      if !defined(ICE_OS_WINRT)
+#          if defined(_DEBUG)
+#             pragma comment(lib, "Ice-" ICE_STRING_VERSION "d.lib")
+#          else
+#             pragma comment(lib, "Ice-" ICE_STRING_VERSION ".lib")
+#          endif
+
+2. Install Ice Debug by under folder cpp
+nmake /f Makefile.mak clean
+nmake /f Makefile.mak install
+
+3. Update cpp/config/Make.rules.mak to build release binary 
+prefix			= C:\Ice-Release-$(VERSION)
+TO:
+prefix			= C:\Ice-$(VERSION)
+
+And
+#OPTIMIZE		= yes
+To:
+OPTIMIZE		= yes
+
+4. Repeat step 2
+
+B. Linux build
+1. yum install libdb-cxx-devel.x86_64
+2. follow https://github.com/zeroc-ice/ice/blob/master/cpp/BuildInstructionsLinux.md
+   - edit cpp/config/Make.rules 
+     - set prefix for temporary installation path
+     - enable optimization
+   - make cpp11-shared -j8
+
+C. use prepare.sh copy and rename necessary headers and libraries into individual lib folder

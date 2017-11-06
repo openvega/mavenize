@@ -1,0 +1,8 @@
+Get the following files from master head:
+
+https://github.com/cameron314/concurrentqueue
+concurrentqueue.h
+
+https://github.com/cameron314/readerwriterqueue
+atomicops.h
+readerwriterqueue.h

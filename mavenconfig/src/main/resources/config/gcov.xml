@@ -1,0 +1,7 @@
+<project name="gcov">
+  <target name="gcov" if="{gcov.enable}">
+    <exec executable="bash" dir="target">
+      <arg line="-c 'gcov -o nar/obj/* ../src/*/*/* ; gcov -o test-nar/obj/* ../src/*/*/*'"/>
+    </exec>
+  </target>
+</project>
