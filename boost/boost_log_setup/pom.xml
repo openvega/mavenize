@@ -6,9 +6,9 @@
   <modelVersion>4.0.0</modelVersion>
  
   <parent>
-    <groupId>org.boost</groupId>
+    <groupId>io.github.openvega</groupId>
     <artifactId>boost-parent</artifactId>
-    <version>1.59.0</version>
+    <version>1.68.0</version>
   </parent>
 
   <artifactId>boost_log_setup</artifactId>
@@ -21,7 +21,7 @@
       <plugin>
         <groupId>com.github.maven-nar</groupId>
         <artifactId>nar-maven-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.2</version>
         <extensions>true</extensions>
         <configuration>
           <libraries>
@@ -36,13 +36,13 @@
   
   <dependencies>
     <dependency>
-      <groupId>org.boost</groupId>
+      <groupId>io.github.openvega</groupId>
       <artifactId>boost_log</artifactId>
       <type>nar</type>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.boost</groupId>
+      <groupId>io.github.openvega</groupId>
       <artifactId>boost_regex</artifactId>
       <type>nar</type>
       <version>${project.version}</version>

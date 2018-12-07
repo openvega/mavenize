@@ -6,9 +6,9 @@
   <modelVersion>4.0.0</modelVersion>
  
   <!-- The Basics -->
-  <groupId>org.boost</groupId>
+  <groupId>io.github.openvega</groupId>
   <artifactId>boost-parent</artifactId>
-  <version>1.59.0</version>
+  <version>1.68.0</version>
   <packaging>pom</packaging>
 
  
@@ -16,22 +16,79 @@
   <name>Boost Parent</name>
   <description>Boost Library</description>
   <url>http://www.boost.org</url>
- 
+
   <distributionManagement>
     <repository>
-      <id>thirdparty</id>
-      <name>thirdparty</name>
-      <url>http://hkvmmarapppro02:8081/repository/thirdparty</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </repository>
   </distributionManagement>
+
+  <scm>
+    <connection>scm:git:https://github.com/openvega/mavenize.git</connection>
+    <developerConnection>scm:git:https://github.com/openvega/mavenize.git</developerConnection>
+    <url>https://github.com/openvega/mavenize</url>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>openvega</id>
+      <name>openvega</name>
+      <email>openvega@raycray.com</email>
+      <url>https://github.com/openvega</url>
+      <organization>openvega</organization>
+      <organizationUrl>https://github.com/openvega</organizationUrl>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>America/New_York</timezone>
+    </developer>
+  </developers>
   
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>com.github.maven-nar</groupId>
           <artifactId>nar-maven-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.5.2</version>
           <extensions>true</extensions>
           <configuration>
             <resourcesCopyAOL>false</resourcesCopyAOL>
@@ -43,15 +100,15 @@
   
   <modules>
     <module>boost</module>
-	<module>boost_chrono</module>
-	<module>boost_date_time</module>
-	<module>boost_filesystem</module>
-	<module>boost_log</module>
-	<module>boost_log_setup</module>
-	<module>boost_program_options</module>
-	<module>boost_python</module>
-	<module>boost_regex</module>
-	<module>boost_system</module>
-	<module>boost_thread</module>
+	  <module>boost_chrono</module>
+	  <module>boost_date_time</module>
+	  <module>boost_filesystem</module>
+	  <module>boost_log</module>
+	  <module>boost_log_setup</module>
+	  <module>boost_program_options</module>
+	  <module>boost_python</module>
+	  <module>boost_regex</module>
+	  <module>boost_system</module>
+	  <module>boost_thread</module>
   </modules>
 </project>

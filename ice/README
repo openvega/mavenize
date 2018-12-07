@@ -13,21 +13,52 @@ To:
 LIBNAME		= $(top_srcdir)\lib\ice-$(VERSION)$(LIBSUFFIX).lib
 
 1.3 Changes headers under cpp\include in the following: 
-Config.h in Glacier2, Ice, IceBox, IceGrid, IceSSL, IceStorm, IceUtil, Slice\Parser.h and Freeze\Initialize.h
-e.g. In cpp\include\Ice\Config.h
-#      if defined(_DEBUG) && !defined(ICE_OS_WINRT)
-#          pragma comment(lib, "IceD.lib")
-To:
-#      if !defined(ICE_OS_WINRT)
-#          if defined(_DEBUG)
-#             pragma comment(lib, "Ice-" ICE_STRING_VERSION "d.lib")
-#          else
-#             pragma comment(lib, "Ice-" ICE_STRING_VERSION ".lib")
-#          endif
+Config.h in IceUtil
+ In cpp\include\IceUtil\Config.h
+ 
+ Replace the following:
+#   ifdef ICE_CPP11_MAPPING
+# ...
+# ...
+#   endif
 
-2. Install Ice Debug by under folder cpp
-nmake /f Makefile.mak clean
-nmake /f Makefile.mak install
+To:
+#   ifdef ICE_CPP11_MAPPING
+#      if defined(_DEBUG)
+#         if defined(ICE_OS_UWP)
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "uwp++11d.lib"
+#         else
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "++11d.lib"
+#         endif
+#      else
+#         if defined(ICE_OS_UWP)
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "uwp++11.lib"
+#         else
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "++11.lib"
+#         endif
+#      endif
+#   else
+#      if defined(_DEBUG)
+#         if defined(ICE_OS_UWP)
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "uwpd.lib"
+#         else
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "d.lib"
+#         endif
+#      else
+#         if defined(ICE_OS_UWP)
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION "uwp.lib"
+#         else
+#            define ICE_LIBNAME(NAME) NAME "-" ICE_STRING_VERSION ".lib"
+#         endif
+#      endif
+#   endif
+
+
+2. Build Ice and copy the build to another directory, e.g. C:\Ice-x.x.x
+msbuild msbuild\ice.proj /p:Configuration=Debug /p:Platform=x64 /t:NuGetPack
+copy %ICE_ROOT%\cpp\msbuild\zeroc.ice.v141\build\native to %TargetDir%
+msbuild msbuild\ice.proj /p:Configuration=Release /p:Platform=x64 /t:NuGetPack
+copy %ICE_ROOT%\cpp\msbuild\zeroc.ice.v141\build\native and %ICE_ROOT%\cpp\msbuild\zeroc.ice.v141\tools to %TargetDir%
 
 3. Update cpp/config/Make.rules.mak to build release binary 
 prefix			= C:\Ice-Release-$(VERSION)
@@ -46,7 +77,6 @@ B. Linux build
 2. follow https://github.com/zeroc-ice/ice/blob/master/cpp/BuildInstructionsLinux.md
    - edit cpp/config/Make.rules 
      - set prefix for temporary installation path
-     - enable optimization
-   - make cpp11-shared -j8
+   - make CONFIGS=ALL -j8
 
 C. use prepare.sh copy and rename necessary headers and libraries into individual lib folder

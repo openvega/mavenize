@@ -1,3 +1,0 @@
-# Patch python headers by merging windows and Linux copy
-1. base on python linux headers
-2. checkout pyconfig.h, pyconfig-win.h from repo to patch

@@ -6,9 +6,9 @@
   <modelVersion>4.0.0</modelVersion>
  
   <parent>
-    <groupId>com.zeroc</groupId>
+    <groupId>io.github.openvega</groupId>
     <artifactId>ice-parent</artifactId>
-    <version>3.6.3</version>
+    <version>3.7.1</version>
   </parent>
 
  

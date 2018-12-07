@@ -8,13 +8,24 @@ To
 #define BOOST_ALL_NO_LIB
 #endif
 
-2. build and install boost as 64-bit static with dynamic runtime library
+#ifdef _MSC_VER
+#ifndef BOOST_USE_WINAPI_VERSION
+#define BOOST_USE_WINAPI_VERSION BOOST_WINAPI_VERSION_WIN7
+#endif
+#endif
+
+Patch include/boost/iostreams/detail/config/fpos.hpp in iostream according to this:
+https://github.com/boostorg/iostreams/pull/57
+
+3. build and install boost as 64-bit static with dynamic runtime library
 bootstrap.bat
-b2 address-model=64 runtime-link=shared install
+b2 address-model=64 link=static runtime-link=shared -j 15 install
+b2 address-model=64 link=shared runtime-link=shared --with-python -j 15 install
 
 B. Linux
-bootstrap.bat
-b2 cxxflags=-fPIC address-model=64 install
+1. build
+./bootstrap.sh --prefix=/home/rcheng/boost
+./b2 cxxflags=-fPIC -j 15 address-model=64 install
 
 C. Mavenize
 3. use prepare.sh copy and rename necessary headers and libraries into individual lib folder

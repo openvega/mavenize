@@ -1,6 +1,7 @@
 1. In Linux : build and install protobuf, 
     configure with --prefix switch to a temporary install path
-    ./configure --prefix ~/dev/thirdparty/protobuf_binary
+    ./autogen
+    ./configure --prefix=~/dev/thirdparty/protobuf_binary
 
 2. In Windows : change the package property of all packages:
     - Configuration Properties -> C/C++ -> Code Generation -> Runtime Library 
@@ -8,16 +9,15 @@
         Debug -> Multi-threaded Debug DLL (/MDd)
     - build debug and release 64bit in visual studio
 
-3. Two sub project created to host the protobuf package
+3. prepare
 protobuf
+    copy prococ binary to src/nar/resources/aol/amd64-Linux-gpp/lib
+    and prococ.exe binary to src/nar/resources/aol/amd64-WIndows-msvc/lib
     copy library to src/nar/resources/aol/${AOL}/lib e.g. src/nar/resources/aol/amd64-Linux-gpp/lib
-    Linux: clone libprotobuf.a to libprotobuf-3.0.2.a
+    Linux: clone libprotobuf.a to libprotobuf-<version>.a
     Windows: clone 
-        libprotobuf.lib to protobuf-3.0.2.lib
-        libprotobufd.lib to protobuf-3.0.2d.lib
+        libprotobuf.lib to protobuf-<version>.lib
+        libprotobufd.lib to protobuf-<version>d.lib
     copy header to src/nar/resources/noarch/include
-protobuf-exec
-    copy release version protoc binary to src/nar/resources/aol/${AOL}/bin
-    touch src/nar/resources/noarch/include/dummy.h
-
+    
 4. mvn deploy
