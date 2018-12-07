@@ -1,0 +1,36 @@
+On Windows, it requires ActivePerl.
+Download and unzip nasm from https://www.nasm.us.  Add nasm path to $PATH.
+
+Follow the instructions in the INSTALL file except the makefile of the nmake is nt.mak instead of ntdll.mak
+For release build, run:
+ > perl Configure VC-WIN64A
+ > ms\do_win64a
+ > nmake -f ms\nt.mak
+ > cd out32
+ > ..\ms\test
+
+For debug build, run:
+ > perl Configure debug-VC-WIN64A no-asm
+ > ms\do_win64a
+ > nmake -f ms\nt.mak
+ > cd out32.dbg
+ > ..\ms\test
+
+Copy openssl from inc32 to devtools\mavenize\openssl\src\nar\resources\noarch\include
+Copy *.lib from out32dll to devtools\mavenize\openssl\src\nar\resources\aol\amd64-Windows-msvc\lib
+Rename:	((d) for debug lib)
+libeay32.lib -> openssl_libeay-1.0.2k(d).lib
+ssleay32.lib -> openssl_ssleay-1.0.2k(d).lib
+
+
+Reference:
+http://developer.covenanteyes.com/building-openssl-for-visual-studio/
+
+Linux:
+1. mvn versions:set -DnewVersion=1.0-dummy
+2. update all child pom.xml, comment out <configuration>...</configuration> in <artifactId>nar-maven-plugin</artifactId>
+3. remove openssl\openssl_ssleay\src\nar\resources\noarch\include\openssl and replace by dummy.h
+4. mvn clean deploy
+5. mvn versions:revert
+
+ 
