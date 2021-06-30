@@ -1,18 +1,15 @@
 1. In Linux : build and install protobuf, 
     configure with --prefix switch to a temporary install path
     ./autogen
-    ./configure --prefix=~/dev/thirdparty/protobuf_binary
+    ./configure --prefix=$HOME/dev/thirdparty/protobuf_binary
 
 2. In Windows : change the package property of all packages:
-    - Configuration Properties -> C/C++ -> Code Generation -> Runtime Library 
-        Release -> Multi-threaded DLL (/MD)
-        Debug -> Multi-threaded Debug DLL (/MDd)
-    - build debug and release 64bit in visual studio
+    mkdir vs && cd vs && cmake ../cmake -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF
 
 3. prepare
 protobuf
-    copy prococ binary to src/nar/resources/aol/amd64-Linux-gpp/lib
-    and prococ.exe binary to src/nar/resources/aol/amd64-WIndows-msvc/lib
+    copy protoc binary to src/nar/resources/aol/amd64-Linux-gpp/lib
+    and protoc.exe binary to src/nar/resources/aol/amd64-WIndows-msvc/lib
     copy library to src/nar/resources/aol/${AOL}/lib e.g. src/nar/resources/aol/amd64-Linux-gpp/lib
     Linux: clone libprotobuf.a to libprotobuf-<version>.a
     Windows: clone 
