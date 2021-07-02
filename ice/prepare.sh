@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export VERSION=3.7.5
+export MINORVER=.1
 export VERSUF=37
 export SRC=/c/Ice-${VERSION}
 export SRC_INC=${SRC}/include
@@ -46,6 +47,7 @@ do
         fi
         mkdir -p ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib
         cp -p ${SRC_LLIB}/lib${p}${CPP11}.so ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${SRC_NAME}.so
+        cp -p ${SRC_LLIB}/lib${p}${CPP11}.so ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${SRC_NAME}${MINORVER}.so
     fi
     
     if [ "${pl}" = "ice" ]; then

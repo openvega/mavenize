@@ -2,12 +2,13 @@
 
 export MAJOR_VER=1
 export MINOR_VER=76
-export BUILD=0
+export BUILD=2
 export SRC=/c/Boost
 export SRC_INC=${SRC}/include/boost-${MAJOR_VER}_${MINOR_VER}
 export SRC_NAME=-vc142-mt-x64-${MAJOR_VER}_${MINOR_VER}
 export DEBUG_SRC_NAME=-vc142-mt-gd-x64-${MAJOR_VER}_${MINOR_VER}
 export VERSION=${MAJOR_VER}.${MINOR_VER}.${BUILD}
+export PYVERSION=${MAJOR_VER}.${MINOR_VER}.0
 export AOL_WIN=amd64-Windows-msvc
 export AOL_LINUX=amd64-Linux-gpp
 export SRC_LIB=${SRC}/lib
@@ -56,5 +57,5 @@ if [ -d ${SRC_LINUX_LIB} ]; then
     fi
     mkdir -p ${p}/src/nar/resources/aol/${AOL_LINUX}/lib 
     cp -p ${SRC_LINUX_LIB}/lib${p}27.so ${p}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${VERSION}.so
-    cp -p ${SRC_LINUX_LIB}/lib${p}27.so ${p}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}27.so.${VERSION}
+    cp -p ${SRC_LINUX_LIB}/lib${p}27.so ${p}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}27.so.${PYVERSION}
 fi
