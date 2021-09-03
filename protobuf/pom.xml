@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.openvega</groupId>
-  <version>3.5.2.2019</version>
+  <version>3.5.2.1</version>
   <artifactId>protobuf</artifactId>
   <name>Google Protobuf Library</name>
   <packaging>nar</packaging>  

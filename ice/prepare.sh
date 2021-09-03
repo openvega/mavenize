@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export VERSION=3.7.5
-export MINORVER=.1
+export MINORVER=.2
 export VERSUF=37
 export SRC=/c/Ice-${VERSION}
 export SRC_INC=${SRC}/include
@@ -57,11 +57,11 @@ do
         fi
         for c in Release
         do
-            cp -p ${SRC_BIN}/${c}/bzip2.dll ${SRC_BIN}/${c}/icebox${VERSUF}.dll ${SRC_BIN}/${c}/icegrid${VERSUF}.dll ${SRC_BIN}/${c}/icestormservice${VERSUF}.dll ${SRC_BIN}/${c}/icepatch2${VERSUF}.dll ${SRC_BIN}/${c}/icexml${VERSUF}.dll ${SRC_BIN}/${c}/icessl${VERSUF}.dll ${SRC_BIN}/${c}/icedb${VERSUF}.dll ice/src/nar/resources/aol/${AOL_WIN}/lib/
+            cp -p ${SRC_BIN}/${c}/icebox${VERSUF}.dll ${SRC_BIN}/${c}/icegrid${VERSUF}.dll ${SRC_BIN}/${c}/icestormservice${VERSUF}.dll ${SRC_BIN}/${c}/icepatch2${VERSUF}.dll ${SRC_BIN}/${c}/icexml${VERSUF}.dll ${SRC_BIN}/${c}/icessl${VERSUF}.dll ${SRC_BIN}/${c}/icedb${VERSUF}.dll ice/src/nar/resources/aol/${AOL_WIN}/lib/
         done
         for c in Debug Release
         do
-            cp -p ${SRC_LIB}/${c}/icediscovery${SRC_NAME}*.lib ${SRC_LIB}/${c}/icelocatordiscovery${SRC_NAME}*.lib ${SRC_LIB}/${c}/icessl${SRC_NAME}*.lib ice/src/nar/resources/aol/${AOL_WIN}/lib/
+            cp -p ${SRC_BIN}/${c}/bzip2*.dll ${SRC_LIB}/${c}/icediscovery${SRC_NAME}*.lib ${SRC_LIB}/${c}/icelocatordiscovery${SRC_NAME}*.lib ${SRC_LIB}/${c}/icessl${SRC_NAME}*.lib ice/src/nar/resources/aol/${AOL_WIN}/lib/
         done
         if [ -d ${SRC_LLIB} ]; then
             echo "Preparing Linux Ice additional libraries..."
