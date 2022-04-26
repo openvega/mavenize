@@ -24,7 +24,7 @@ b2 address-model=64 link=shared runtime-link=shared --with-python -j 15 install
 
 B. Linux
 1. build
-./bootstrap.sh --prefix=/home/rcheng/boost
+./bootstrap.sh --prefix=$HOME/boost
 ./b2 cxxflags=-fPIC -j 15 address-model=64 install
 
 C. Mavenize

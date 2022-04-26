@@ -8,7 +8,7 @@
   <groupId>io.github.openvega</groupId>
   <artifactId>python</artifactId>
   <name>python</name>
-  <version>2.7.5</version>
+  <version>3.6</version>
   <packaging>nar</packaging>
   <description>python</description>
   <url>https://www.python.org/</url>
@@ -71,7 +71,7 @@
         <version>3.5.2</version>
         <extensions>true</extensions>
         <configuration>
-          <output>python27</output>
+          <output>python36</output>
           <resourcesCopyAOL>false</resourcesCopyAOL>
           <libraries>
             <library>

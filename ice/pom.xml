@@ -8,7 +8,7 @@
   <!-- The Basics -->
   <groupId>io.github.openvega</groupId>
   <artifactId>ice-parent</artifactId>
-  <version>3.7.1</version>
+  <version>37++11.2</version>
   <packaging>pom</packaging>
 
   <!-- More Project Information -->
@@ -98,8 +98,8 @@
   </build>
   
   <modules>
-    <module>Ice</module>
-    <module>IceStorm</module>
+    <module>ice</module>
+    <module>icestorm</module>
     <module>ice-exec</module>
   </modules>
 </project>
