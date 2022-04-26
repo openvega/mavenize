@@ -1,6 +1,7 @@
 1. In Linux : build and install protobuf, 
-    configure with --prefix switch to a temporary install path
+    configure with --disable-shared and --prefix switch to a temporary install path
     ./autogen
+<<<<<<< HEAD
     ./configure --prefix=$HOME/dev/thirdparty/protobuf_binary
 
 2. In Windows : change the package property of all packages:
@@ -9,6 +10,13 @@
         Debug -> Multi-threaded Debug DLL (/MDd)
     - build debug and release 64bit in visual studio
 new: mkdir vsbuild && cd vsbuild && cmake ../cmake -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF
+=======
+    export CXXFLAGS=-O2 -DNDEBUG
+    ./configure --disable-shared --prefix=$HOME/dev/thirdparty/protobuf_binary
+
+2. In Windows : change the package property of all packages:
+    mkdir vs && cd vs && cmake ../cmake -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF
+>>>>>>> 79aa753e1b9ce29805d72a42e5b4b7f7162aa5d8
 
 3. prepare
 protobuf

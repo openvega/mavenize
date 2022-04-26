@@ -1,0 +1,18 @@
+A. Windows build
+
+1. Make the following changes to the code:
+1.1 Update prefix In config\Make.rules.mak
+
+2. (Internet access required) Build Ice and copy the build to another directory, e.g. C:\Ice-x.x.x 
+cd cpp
+msbuild /m msbuild\ice.proj /p:Configuration=Release /t:BuildDist
+msbuild /m msbuild\ice.proj /p:Configuration=Debug /t:BuildDist
+copy %ICE_ROOT%\cpp\bin to %TargetDir%
+copy %ICE_ROOT%\cpp\lib to %TargetDir%
+
+B. Linux build
+1. make
+make ICE_HOME=$HOME/Ice-3.7.5 CONFIGS=cpp11-shared -j8 srcs install
+make ICE_HOME=$HOME/Ice-3.7.5 CONFIGS=shared -j8 srcs install
+
+C. use prepare.sh copy and rename necessary headers and libraries into individual lib folder

@@ -1,38 +1,18 @@
 A. Windows
-1. Open googlemock\msvc\2015\gmock.sln, create x64 platform
-
-2. Configuration ALL project Properties -> C/C++ -> Code Generation -> Runtime Library 
-    Release -> Multi-threaded DLL (/MD)
-    Debug -> Multi-threaded Debug DLL (/MDd)
-    
-3. Add gmock-all.cc to gmock project
-
-4. Build gmock both debug and release library
-new: use cmake 
-mkdir build && cd build && cmake .. -Dgtest_force_shared_crt=ON
+1. mkdir vs && cd vs && cmake .. -Dgtest_force_shared_crt=ON
+2. Build gmock both debug and release library
 
 B. Linux
-5. Linux build, refer to README.md
-5.1 export GTEST_DIR and GMOCK_DIR
-5.2 compile
-> g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} -isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} -pthread -c ${GTEST_DIR}/src/gtest-all.cc
-> g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} -isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} -pthread -c ${GMOCK_DIR}/src/gmock-all.cc
-> g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} -isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} -pthread -c ${GMOCK_DIR}/src/gmock-main.cc
-> ar -rv libgmock.a gtest-all.o gmock-all.o gmock_main.o
-
-new: use cmake
-yum install cmake
-cmake .. 
-build in Visual studio
-
-linux:
- ar -rv libgmock-all.a ./googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o ./googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o ./googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+3. gmake (Linux build, refer to README.md)
+mkdir builddir && cd builddir && cmake .. && make
+4. manually create single library with necessary object files
+ar -rv libgmock-all.a ./googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o ./googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o ./googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
 
 5. prepare and package
 for windows:
     copy gmock debug and release library
-    Debug\gmock-main.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-1.8.0d.lib
-    Release\gmock-main.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-1.8.0.lib
+    Debug\gmock-main.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-{VERSION}d.lib
+    Release\gmock-main.lib -> gmock/src/nar/resources/aol/amd64-Windows-msvc/lib/gmock-{VERSION}.lib
 for linux:
-    libgmock.a -> gmock/src/nar/resources/aol/amd64-Linux-gpp/lib/libgmock-1.8.0.a
+    libgmock.a -> gmock/src/nar/resources/aol/amd64-Linux-gpp/lib/libgmock-{VERSION}.a
     copy gtest and gmock header to src/nar/resources/noarch/include
