@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+ 
   <groupId>io.github.openvega</groupId>
-  <artifactId>xlw</artifactId>
-  <version>5.0.2f0</version>
-  <name>Excel C API Wrapper</name>
+  <artifactId>libcurl</artifactId>
+  <version>7.82.0</version>
+  <name>libcurl</name>
   <packaging>nar</packaging>
-  <description>Excel C API Wrapper</description>
-  <url>http://xlw.sourceforge.net/</url>
+  <description>lib Curl</description>
+  <url>https://curl.se/libcurl/</url>
 
   <distributionManagement>
     <repository>
@@ -49,7 +50,7 @@
       <timezone>America/New_York</timezone>
     </developer>
   </developers>
-
+  
   <build>
     <defaultGoal>deploy</defaultGoal>
     <plugins>
