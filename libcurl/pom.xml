@@ -7,7 +7,7 @@
  
   <groupId>io.github.openvega</groupId>
   <artifactId>libcurl</artifactId>
-  <version>7.82.0</version>
+  <version>7.82.1</version>
   <name>libcurl</name>
   <packaging>nar</packaging>
   <description>lib Curl</description>
