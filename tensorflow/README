@@ -1,0 +1,4 @@
+1. copy the library to src/nar/resources/aol/${AOL}/lib/
+1.1 copy all headers to src/nar/resources/noarch/include
+
+2. Deploy package
