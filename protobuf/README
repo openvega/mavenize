@@ -1,32 +1,36 @@
 1. In Linux : build and install protobuf, 
     configure with --disable-shared and --prefix switch to a temporary install path
-    ./autogen
-<<<<<<< HEAD
-    ./configure --prefix=$HOME/dev/thirdparty/protobuf_binary
+    cmake -S . -B build -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=<bin_install_path> -DCMAKE_BUILD_TYPE=Debug
+    cmake --build build
+    cmake --install build
+    cmake -S . -B build -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=<bin_install_path> -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+    cmake --install build
 
 2. In Windows : change the package property of all packages:
     - Configuration Properties -> C/C++ -> Code Generation -> Runtime Library 
         Release -> Multi-threaded DLL (/MD)
         Debug -> Multi-threaded Debug DLL (/MDd)
     - build debug and release 64bit in visual studio
-new: mkdir vsbuild && cd vsbuild && cmake ../cmake -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF
-=======
-    export CXXFLAGS=-O2 -DNDEBUG
-    ./configure --disable-shared --prefix=$HOME/dev/thirdparty/protobuf_binary
-
-2. In Windows : change the package property of all packages:
-    mkdir vs && cd vs && cmake ../cmake -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF
->>>>>>> 79aa753e1b9ce29805d72a42e5b4b7f7162aa5d8
+        cmake -S . -B build -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=<bin_install_path>
+        cmake --build build --config Debug
+        cmake --build build --config Release
+        cmake --install build --config Debug
+        cmake --install build --config Release
 
 3. prepare
 protobuf
     copy protoc binary to src/nar/resources/aol/amd64-Linux-gpp/lib
     and protoc.exe binary to src/nar/resources/aol/amd64-WIndows-msvc/lib
     copy library to src/nar/resources/aol/${AOL}/lib e.g. src/nar/resources/aol/amd64-Linux-gpp/lib
-    Linux: clone libprotobuf.a to libprotobuf-<version>.a
+    Linux:
+        clone libprotobuf.a to libprotobuf-<version>.a
+        clone libprotoc.a to libprotoc-<version>.a
     Windows: clone 
         libprotobuf.lib to protobuf-<version>.lib
         libprotobufd.lib to protobuf-<version>d.lib
+	libprotoc.lib to protoc-<version>.lib
+	libprotocd.lib to protoc-<version>d.lib
     copy header to src/nar/resources/noarch/include
     
 4. mvn deploy
