@@ -1,0 +1,10 @@
+1. Download and build zlib under contrib/vs/ x64 release mode from https://www.zlib.net/
+
+2. 
+copy zlibstat.lib to src/nar/resources/aol/amd64-Windows-msvc/lib/zlib-${VERSION}.lib
+
+2.1 copy all headers to src/nar/resources/noarch/include
+
+3. Deploy windows package
+
+4. No need to mavenize for Linux
