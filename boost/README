@@ -1,4 +1,3 @@
-We use 1.59 rather than 1.62 as there are linking errors when building DLLs that depend on boost log.
 A. Windows
 1. replace the following in boost\config\user.hpp to disable auto library select
 From
