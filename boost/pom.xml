@@ -8,7 +8,7 @@
   <!-- The Basics -->
   <groupId>io.github.openvega</groupId>
   <artifactId>boost-parent</artifactId>
-  <version>1.76.3</version>
+  <version>1.83.0</version>
   <packaging>pom</packaging>
 
  
@@ -100,15 +100,16 @@
   
   <modules>
     <module>boost</module>
-	  <module>boost_chrono</module>
-	  <module>boost_date_time</module>
-	  <module>boost_filesystem</module>
-	  <module>boost_log</module>
-	  <module>boost_log_setup</module>
-	  <module>boost_program_options</module>
-	  <module>boost_python</module>
-	  <module>boost_regex</module>
-	  <module>boost_system</module>
-	  <module>boost_thread</module>
+    <module>boost_atomic</module>
+    <module>boost_chrono</module>
+    <module>boost_date_time</module>
+    <module>boost_filesystem</module>
+    <module>boost_log</module>
+    <module>boost_log_setup</module>
+    <module>boost_program_options</module>
+    <module>boost_python</module>
+    <module>boost_regex</module>
+    <module>boost_system</module>
+    <module>boost_thread</module>
   </modules>
 </project>

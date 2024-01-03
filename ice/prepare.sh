@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export VERSION=3.7.5
-export MINORVER=.2
+export VERSION=3.7.10
+export MINORVER=
 export VERSUF=37
 export SRC=/c/Ice-${VERSION}
 export SRC_INC=${SRC}/include
@@ -39,6 +39,9 @@ do
     cp -p ${SRC_LIB}/Debug/${pl}${SRC_NAME}d.lib ${pl}/src/nar/resources/aol/${AOL_WIN}/lib/
     cp -p ${SRC_BIN}/Debug/${pl}${SRC_NAME}d.dll ${pl}/src/nar/resources/aol/${AOL_WIN}/lib/
     
+    cp -p ${SRC_LIB}/Release/${pl}${SRC_NAME}.lib ${pl}/src/nar/resources/aol/${AOL_WIN}/lib/${p1}${VERSION}.lib
+    cp -p ${SRC_LIB}/Debug/${pl}${SRC_NAME}d.lib ${pl}/src/nar/resources/aol/${AOL_WIN}/lib/${p1}${VERSION}d.lib
+    
     # linux
     if [ -d ${SRC_LLIB} ]; then
         echo "Preparing Linux ${p} ..."
@@ -46,8 +49,7 @@ do
             rm ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/*
         fi
         mkdir -p ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib
-        cp -p ${SRC_LLIB}/lib${p}${CPP11}.so ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${SRC_NAME}.so
-        cp -p ${SRC_LLIB}/lib${p}${CPP11}.so ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${SRC_NAME}${MINORVER}.so
+        cp -p ${SRC_LLIB}/lib${p}${CPP11}.so ${pl}/src/nar/resources/aol/${AOL_LINUX}/lib/lib${p}-${VERSION}.so
     fi
     
     if [ "${pl}" = "ice" ]; then

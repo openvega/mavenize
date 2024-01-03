@@ -8,7 +8,7 @@
   <parent>
     <groupId>io.github.openvega</groupId>
     <artifactId>boost-parent</artifactId>
-    <version>1.76.3</version>
+    <version>1.83.0</version>
   </parent>
 
  

@@ -11,8 +11,8 @@
     <version>1.83.0</version>
   </parent>
 
-  <artifactId>boost_system</artifactId>
-  <name>Boost system</name>
+  <artifactId>boost_atomic</artifactId>
+  <name>Boost atomic</name>
   <packaging>nar</packaging>
 
   <build>

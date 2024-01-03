@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export MAJOR_VER=1
-export MINOR_VER=76
-export BUILD=3
+export MINOR_VER=83
+export BUILD=0
 export SRC=/c/Boost
 export SRC_INC=${SRC}/include/boost-${MAJOR_VER}_${MINOR_VER}
 export SRC_NAME=-vc142-mt-x64-${MAJOR_VER}_${MINOR_VER}
@@ -21,7 +21,7 @@ fi
 mkdir -p boost/src/nar/resources/noarch/include
 cp -Rp ${SRC_INC}/boost boost/src/nar/resources/noarch/include/
 
-for p in boost_log_setup boost_log boost_chrono boost_date_time  boost_program_options boost_regex boost_filesystem boost_thread boost_system 
+for p in boost_atomic boost_log_setup boost_log boost_chrono boost_date_time  boost_program_options boost_regex boost_filesystem boost_thread boost_system 
 do
     echo "Preparing ${p} ..."
     if [ -d ${p}/src/nar/resources/aol/${AOL_WIN}/lib ]; then

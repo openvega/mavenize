@@ -12,7 +12,7 @@ copy %ICE_ROOT%\cpp\lib to %TargetDir%
 
 B. Linux build
 1. make
-make ICE_HOME=$HOME/Ice-3.7.5 CONFIGS=cpp11-shared -j8 srcs install
-make ICE_HOME=$HOME/Ice-3.7.5 CONFIGS=shared -j8 srcs install
+make ICE_HOME=$HOME/Ice-3.7.10 CONFIGS=cpp11-shared -j8 srcs install
+make ICE_HOME=$HOME/Ice-3.7.10 CONFIGS=shared -j8 srcs install
 
 C. use prepare.sh copy and rename necessary headers and libraries into individual lib folder
