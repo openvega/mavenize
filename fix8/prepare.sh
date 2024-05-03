@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export VERSION=1.4.3.2
+export VERSION=1.4.3.3
 export SRC_VERSION=1.4.3
 export SRC=/c/dev/thirdparty/fix8-${SRC_VERSION}
 export SRC_LINUX=/c/dev/thirdparty/fix8-${SRC_VERSION}-inst
@@ -54,6 +54,7 @@ cp -p ${SRC_LIB}/Release/LIBEAY32.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
 cp -p ${SRC_LIB}/Release/SSLEAY32.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
 cp -p ${SRC_LIB}/Debug/zlibd1.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
 cp -p ${SRC_LIB}/Release/zlib1.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
+cp -p ${SRC_LIB}/Debug/expatd.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
 
 cp -p ${SRC_LIB}/Debug/fix8d.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
 cp -p ${SRC_LIB}/Release/fix8.dll fix8/src/nar/resources/aol/${AOL_WIN}/lib/
