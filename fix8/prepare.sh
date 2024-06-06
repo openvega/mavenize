@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export VERSION=1.4.3.4
+export VERSION=1.4.3.5
 export SRC_VERSION=1.4.3
 export SRC=/c/dev/thirdparty/fix8-${SRC_VERSION}
 export SRC_LINUX=/c/dev/thirdparty/fix8-${SRC_VERSION}-inst

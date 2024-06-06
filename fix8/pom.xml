@@ -7,7 +7,7 @@
 
   <groupId>io.github.openvega</groupId>
   <artifactId>fix8-parent</artifactId>
-  <version>1.4.3.4</version>
+  <version>1.4.3.5</version>
   <packaging>pom</packaging>
   
   <!-- More Project Information -->
